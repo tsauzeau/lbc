@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/tsauzeau/lbc/cmd/lbc/config"
 	"github.com/tsauzeau/lbc/cmd/lbc/controllers"
+	"github.com/tsauzeau/lbc/cmd/lbc/db"
 
 	"github.com/gin-gonic/gin"
 )
@@ -29,9 +31,15 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 func main() {
+	if err := config.LoadConfig("./config"); err != nil {
+		panic(fmt.Errorf("invalid application configuration: %s", err))
+	}
+
 	r := gin.Default()
 
 	r.Use(CORSMiddleware())
+
+	db.Init(config.Config.RedisHost)
 
 	v1 := r.Group("/v1")
 	{
@@ -39,6 +47,7 @@ func main() {
 		fizzbuzz := new(controllers.FizzbuzzController)
 
 		v1.GET("/fizzbuzz", fizzbuzz.Get)
+		v1.GET("/stat", fizzbuzz.Stat)
 	}
 
 	r.GET("/", func(c *gin.Context) {
@@ -49,5 +58,5 @@ func main() {
 		c.JSON(http.StatusNotFound, gin.H{"Message": "Page Not Found"})
 	})
 
-	r.Run(":9000")
+	r.Run(config.Config.APIPort)
 }

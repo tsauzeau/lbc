@@ -1,0 +1,6 @@
+projectKey=tsauzeau-lbc
+serverUrl=http://localhost:9000
+serverVersion=7.9.2.30863
+dashboardUrl=http://localhost:9000/dashboard?id=tsauzeau-lbc
+ceTaskId=AW-GgboxzP5z6qi_cBrV
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AW-GgboxzP5z6qi_cBrV

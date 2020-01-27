@@ -1,4 +1,4 @@
-package controllers
+package tests
 
 import (
 	"fmt"
@@ -11,7 +11,6 @@ import (
 	"github.com/tsauzeau/lbc/cmd/lbc/forms"
 
 	"github.com/bmizerany/assert"
-	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/google/go-querystring/query"
 )
@@ -19,9 +18,6 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	gin.SetMode(gin.TestMode)
-
-	store, _ := sessions.NewRedisStore(10, "tcp", "localhost:6379", "", []byte("secret"))
-	r.Use(sessions.Sessions("gin-boilerplate-session", store))
 
 	v1 := r.Group("/v1")
 	{

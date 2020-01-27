@@ -31,7 +31,7 @@ TAG := $(VERSION)__$(OS)_$(ARCH)
 
 BUILD_IMAGE ?= golang:1.13-alpine
 # Tweaked image used for test runs (see `test.Dockerfile`)
-TEST_IMAGE ?= martinheinz/golang:1.12-alpine-test
+TEST_IMAGE ?= tsauzeau/golang:1.13-alpine-test
 
 # If you want to build all binaries, see the 'all-build' rule.
 # If you want to build all containers, see the 'all-container' rule.

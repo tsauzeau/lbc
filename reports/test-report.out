@@ -1,0 +1,50 @@
+{"Time":"2020-01-08T18:52:27.2526468Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc","Output":"?   \tgithub.com/tsauzeau/lbc/cmd/lbc\t[no test files]\n"}
+{"Time":"2020-01-08T18:52:27.2532441Z","Action":"skip","Package":"github.com/tsauzeau/lbc/cmd/lbc","Elapsed":0.001}
+{"Time":"2020-01-08T18:52:27.2537443Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/config","Output":"?   \tgithub.com/tsauzeau/lbc/cmd/lbc/config\t[no test files]\n"}
+{"Time":"2020-01-08T18:52:27.2542243Z","Action":"skip","Package":"github.com/tsauzeau/lbc/cmd/lbc/config","Elapsed":0}
+{"Time":"2020-01-08T18:52:27.254742Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/controllers","Output":"?   \tgithub.com/tsauzeau/lbc/cmd/lbc/controllers\t[no test files]\n"}
+{"Time":"2020-01-08T18:52:27.255451Z","Action":"skip","Package":"github.com/tsauzeau/lbc/cmd/lbc/controllers","Elapsed":0.001}
+{"Time":"2020-01-08T18:52:27.2562662Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/db","Output":"?   \tgithub.com/tsauzeau/lbc/cmd/lbc/db\t[no test files]\n"}
+{"Time":"2020-01-08T18:52:27.2567366Z","Action":"skip","Package":"github.com/tsauzeau/lbc/cmd/lbc/db","Elapsed":0}
+{"Time":"2020-01-08T18:52:27.2572224Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/forms","Output":"?   \tgithub.com/tsauzeau/lbc/cmd/lbc/forms\t[no test files]\n"}
+{"Time":"2020-01-08T18:52:27.2576994Z","Action":"skip","Package":"github.com/tsauzeau/lbc/cmd/lbc/forms","Elapsed":0}
+{"Time":"2020-01-08T18:52:29.3700388Z","Action":"run","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK"}
+{"Time":"2020-01-08T18:52:29.3705388Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"=== RUN   TestFizzbuzzOK\n"}
+{"Time":"2020-01-08T18:52:29.3709778Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.\n"}
+{"Time":"2020-01-08T18:52:29.371369Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"\n"}
+{"Time":"2020-01-08T18:52:29.3717137Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"[GIN-debug] [WARNING] Running in \"debug\" mode. Switch to \"release\" mode in production.\n"}
+{"Time":"2020-01-08T18:52:29.3721769Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":" - using env:\texport GIN_MODE=release\n"}
+{"Time":"2020-01-08T18:52:29.3724998Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":" - using code:\tgin.SetMode(gin.ReleaseMode)\n"}
+{"Time":"2020-01-08T18:52:29.3729018Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"\n"}
+{"Time":"2020-01-08T18:52:29.3732668Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"[GIN] 2020/01/08 - 18:52:29 | 200 |       425.8µs |                 | GET      /v1/fizzbuzz?int1=3\u0026int2=5\u0026limit=15\u0026string1=fizz\u0026string2=buzz\n"}
+{"Time":"2020-01-08T18:52:29.3736274Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Output":"--- PASS: TestFizzbuzzOK (0.00s)\n"}
+{"Time":"2020-01-08T18:52:29.3740591Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzOK","Elapsed":0}
+{"Time":"2020-01-08T18:52:29.3744536Z","Action":"run","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzMissing"}
+{"Time":"2020-01-08T18:52:29.3748516Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzMissing","Output":"=== RUN   TestFizzbuzzMissing\n"}
+{"Time":"2020-01-08T18:52:29.3753525Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzMissing","Output":"[GIN] 2020/01/08 - 18:52:29 | 400 |        71.8µs |                 | GET      /v1/fizzbuzz?int1=3\u0026int2=5\u0026limit=15\u0026string1=fizz\u0026string2=\n"}
+{"Time":"2020-01-08T18:52:29.3758133Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzMissing","Output":"--- PASS: TestFizzbuzzMissing (0.00s)\n"}
+{"Time":"2020-01-08T18:52:29.3763407Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzMissing","Elapsed":0}
+{"Time":"2020-01-08T18:52:29.3767437Z","Action":"run","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzInvalid"}
+{"Time":"2020-01-08T18:52:29.3771855Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzInvalid","Output":"=== RUN   TestFizzbuzzInvalid\n"}
+{"Time":"2020-01-08T18:52:29.3777857Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzInvalid","Output":"[GIN] 2020/01/08 - 18:52:29 | 400 |        48.2µs |                 | GET      /v1/fizzbuzz?int1=-1\u0026int2=5\u0026limit=-1\u0026string1=fizz\u0026string2=fizz\n"}
+{"Time":"2020-01-08T18:52:29.3782395Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzInvalid","Output":"--- PASS: TestFizzbuzzInvalid (0.00s)\n"}
+{"Time":"2020-01-08T18:52:29.3789163Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzInvalid","Elapsed":0}
+{"Time":"2020-01-08T18:52:29.3793732Z","Action":"run","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzNotFound"}
+{"Time":"2020-01-08T18:52:29.3797578Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzNotFound","Output":"=== RUN   TestFizzbuzzNotFound\n"}
+{"Time":"2020-01-08T18:52:29.3801708Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzNotFound","Output":"[GIN] 2020/01/08 - 18:52:29 | 404 |        32.1µs |                 | GET      /v1/not_found\n"}
+{"Time":"2020-01-08T18:52:29.3805038Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzNotFound","Output":"--- PASS: TestFizzbuzzNotFound (0.00s)\n"}
+{"Time":"2020-01-08T18:52:29.3808839Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestFizzbuzzNotFound","Elapsed":0}
+{"Time":"2020-01-08T18:52:29.3813217Z","Action":"run","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestDummy"}
+{"Time":"2020-01-08T18:52:29.3816542Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestDummy","Output":"=== RUN   TestDummy\n"}
+{"Time":"2020-01-08T18:52:29.3820082Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestDummy","Output":"--- PASS: TestDummy (0.00s)\n"}
+{"Time":"2020-01-08T18:52:29.3822983Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestDummy","Elapsed":0}
+{"Time":"2020-01-08T18:52:29.3825715Z","Action":"run","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestLoadConfig"}
+{"Time":"2020-01-08T18:52:29.382897Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestLoadConfig","Output":"=== RUN   TestLoadConfig\n"}
+{"Time":"2020-01-08T18:52:29.3832947Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestLoadConfig","Output":"--- PASS: TestLoadConfig (0.01s)\n"}
+{"Time":"2020-01-08T18:52:29.3836234Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Test":"TestLoadConfig","Elapsed":0.01}
+{"Time":"2020-01-08T18:52:29.3839968Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Output":"PASS\n"}
+{"Time":"2020-01-08T18:52:29.3843156Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Output":"coverage: [no statements]\n"}
+{"Time":"2020-01-08T18:52:29.3847627Z","Action":"output","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Output":"ok  \tgithub.com/tsauzeau/lbc/cmd/lbc/tests\t0.029s\tcoverage: [no statements]\n"}
+{"Time":"2020-01-08T18:52:29.3850315Z","Action":"pass","Package":"github.com/tsauzeau/lbc/cmd/lbc/tests","Elapsed":0.03}
+{"Time":"2020-01-08T18:52:29.3885735Z","Action":"output","Package":"github.com/tsauzeau/lbc/pkg","Output":"?   \tgithub.com/tsauzeau/lbc/pkg\t[no test files]\n"}
+{"Time":"2020-01-08T18:52:29.389033Z","Action":"skip","Package":"github.com/tsauzeau/lbc/pkg","Elapsed":0}

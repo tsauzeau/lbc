@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+
 	"github.com/spf13/viper"
 )
 
@@ -10,15 +11,18 @@ var Config appConfig
 
 type appConfig struct {
 	// Example Variable
-	ConfigVar string
+	APIPort   string
+	RedisHost string
 }
 
 // LoadConfig loads config from files
 func LoadConfig(configPaths ...string) error {
 	v := viper.New()
-	v.SetConfigName("example")
+	v.SetConfigName("lbc")
 	v.SetConfigType("yaml")
-	v.SetEnvPrefix("blueprint")
+	v.SetEnvPrefix("lbc")
+	v.SetDefault("APIPort", "4242")
+	v.SetDefault("RedisHost", "127.0.0.1:6379")
 	v.AutomaticEnv()
 	for _, path := range configPaths {
 		v.AddConfigPath(path)

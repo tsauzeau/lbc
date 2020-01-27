@@ -1,6 +1,10 @@
 package forms
 
-//FizzbuzzForm ...
+// FizzbuzzForm for the fizzbuzz controller
+// multiples of Int1 are replaced by Str1
+// multiples of Int2 are replaced by Str2
+// multiples of Int1 and Int2 are replaced by Str1Str2
+// in the Limit number
 type FizzbuzzForm struct {
 	Int1    int    `form:"int1" json:"int1" url:"int1" binding:"required"`
 	Int2    int    `form:"int2" json:"int2" url:"int2" binding:"required"`

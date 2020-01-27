@@ -1,25 +1,40 @@
-# Blueprint/Boilerplate For Golang Projects
+### Build the project
 
-[![Build Status](https://travis-ci.com/MartinHeinz/go-project-blueprint.svg?branch=master)](https://travis-ci.com/MartinHeinz/go-project-blueprint)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MartinHeinz_go-project-blueprint&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=MartinHeinz_go-project-blueprint)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/ec7ebefe63609984cb5c/test_coverage)](https://codeclimate.com/github/MartinHeinz/go-project-blueprint/test_coverage)
-[![Go Report Card](https://goreportcard.com/badge/github.com/MartinHeinz/go-project-blueprint)](https://goreportcard.com/report/github.com/MartinHeinz/go-project-blueprint)
+```bash
+go mod vendor
+make
+```
 
-## Blog Posts - More Information About This Repo
+The binary will be in the ./bin/OS_ARCH/ folder
 
-You can find more information about this project/repository and how to use it in following blog posts:
+### Start the dev environment
 
-- [Ultimate Setup for Your Next Golang Project](https://towardsdatascience.com/ultimate-setup-for-your-next-golang-project-1cc989ad2a96)
-- [Setting up GitHub Package Registry with Docker and Golang](https://towardsdatascience.com/setting-up-github-package-registry-with-docker-and-golang-7a75a2533139)
-- [Building RESTful APIs in Golang](https://towardsdatascience.com/building-restful-apis-in-golang-e3fe6e3f8f95)
-- [Setting Up Swagger Docs for Golang API](https://towardsdatascience.com/setting-up-swagger-docs-for-golang-api-8d0442263641)
+```bash
+docker-compose up -d
+go mod vendor
+make
+./bin/OS_ARCH/lbc
+```
 
-### Setting Up
-- Replace All Occurrences of `martinheinz/go-project-blueprint` with your username repository name
-- Replace All Occurrences of `blueprint` with your desired image name
+Go on http://127.0.0.1:4242/v1/fizzbuzz?string1=toto&string2=tataa&limit=100&int1=5&int2=10
+or http://127.0.0.1:4242/v1/stat
 
+### Build the container for release
+
+```bash
+go mod vendor
+make all-container
+```
+
+The container tag will be output
+
+### Configure the application
+
+A config file is stored in the ./config dir, you can directly edit it.
+For release purpose with docker, you can use as-well env varibles (it will override the config file): 'LBC_APIPORT=":4343" LBC_REDISHOST="redis:6379" bin/darwin_amd64/lbc'
 
 ### Adding New Libraries/Dependencies
+
 ```bash
 go mod vendor
 ```
@@ -30,45 +45,25 @@ Create and Push:
 
 ```bash
 docker login docker.pkg.github.com -u <USERNAME> -p <GITHUB_TOKEN>
-docker build -t  docker.pkg.github.com/martinheinz/go-project-blueprint/blueprint:latest .
+docker build -t  docker.pkg.github.com/tsauzeau/lbc/lbc:latest .
 # make container
-docker push docker.pkg.github.com/martinheinz/go-project-blueprint/blueprint:latest
+docker push docker.pkg.github.com/tsauzeau/lbc/lbc:latest
 # make push
 ```
 
 Pull and Run:
 
 ```bash
-docker pull docker.pkg.github.com/martinheinz/go-project-blueprint/blueprint:latest
-docker run docker.pkg.github.com/martinheinz/go-project-blueprint/blueprint:latest
+docker pull docker.pkg.github.com/tsauzeau/lbc/lbc:latest
+docker run docker.pkg.github.com/tsauzeau/lbc/lbc:latest
 ```
 
+### Ananlyze the project with SonarQube
 
-### Setup new SonarCloud Project
-
-- On _SonarCloud_:
-    - Click _Plus_ Sign in Upper Right Corner
-    - _Analyze New Project_
-    - Click _GitHub app configuration_ link
-    - Configure SonarCloud
-    - Select Repository and Save
-    - Go Back to Analyze Project
-    - Tick Newly Added Repository
-    - Click Set Up
-    - Click Configure with Travis
-    - Copy the Command to Encrypt the Travis Token
-    - Run `travis encrypt --com <TOKEN_YOU_COPPIED>`
-    - Populate the `secure` Field in `.travis.yml` with outputted string
-    - Follow steps to populate your `sonar-project.properties`
-    - Push
-- On Travis CI:
-    - Set `DOCKER_USERNAME`
-    - Set `DOCKER_PASSWORD` to Your GitHub Registry Token
-
-### Setup CodeClimate
-- Go to <https://codeclimate.com/github/repos/new>
-- Add Repository
-- Go to Test Coverage Tab
-- Copy Test Reporter ID
-- Go to Travis and Open Settings for Your Repository
-- Add Environment Variable: name: `CC_TEST_REPORTER_ID`, value: _Copied from CodeClimate_
+- On _SonarQube_:
+  - Go on http://127.0.0.1:9000 (user: admin / password: admin)
+  - Create a new project
+  - In the sonar-project.properties change the projectKey, projectName and login keys by the keys output by sonar.
+  - Run 'make ci'
+  - Use the sonar-scanner 'sonar-scanner' command directly in the project root directory (brew install sonar-scanner on mac).
+  - Check the result on the sonarQube interface (http://127.0.0.1:9000)

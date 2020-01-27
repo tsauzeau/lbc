@@ -1,15 +1,11 @@
 # github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869
 github.com/bmizerany/assert
-# github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff
-github.com/boj/redistore
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
 # github.com/fsnotify/fsnotify v1.4.7
 github.com/fsnotify/fsnotify
 # github.com/gin-contrib/sse v0.1.0
 github.com/gin-contrib/sse
-# github.com/gin-gonic/contrib v0.0.0-20191209060500-d6e26eeaa607
-github.com/gin-gonic/contrib/sessions
 # github.com/gin-gonic/gin v1.5.0
 github.com/gin-gonic/gin
 github.com/gin-gonic/gin/binding
@@ -20,19 +16,18 @@ github.com/go-playground/locales
 github.com/go-playground/locales/currency
 # github.com/go-playground/universal-translator v0.16.0
 github.com/go-playground/universal-translator
+# github.com/go-redis/redis v6.15.6+incompatible
+github.com/go-redis/redis
+github.com/go-redis/redis/internal
+github.com/go-redis/redis/internal/consistenthash
+github.com/go-redis/redis/internal/hashtag
+github.com/go-redis/redis/internal/pool
+github.com/go-redis/redis/internal/proto
+github.com/go-redis/redis/internal/util
 # github.com/golang/protobuf v1.3.2
 github.com/golang/protobuf/proto
-# github.com/gomodule/redigo v2.0.0+incompatible
-github.com/gomodule/redigo/internal
-github.com/gomodule/redigo/redis
 # github.com/google/go-querystring v1.0.0
 github.com/google/go-querystring/query
-# github.com/gorilla/context v1.1.1
-github.com/gorilla/context
-# github.com/gorilla/securecookie v1.1.1
-github.com/gorilla/securecookie
-# github.com/gorilla/sessions v1.2.0
-github.com/gorilla/sessions
 # github.com/hashicorp/hcl v1.0.0
 github.com/hashicorp/hcl
 github.com/hashicorp/hcl/hcl/ast

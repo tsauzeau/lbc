@@ -1,39 +1,43 @@
 package controllers
 
 import (
-	"errors"
-	"fmt"
+	"encoding/json"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/tsauzeau/lbc/cmd/lbc/db"
 	"github.com/tsauzeau/lbc/cmd/lbc/forms"
+	"github.com/tsauzeau/lbc/pkg"
 )
 
-//FizzbuzzController ...
+// FizzbuzzController ...
 type FizzbuzzController struct{}
 
-//Fizzbuzz ...
-func Fizzbuzz(fizzbuzz *forms.FizzbuzzForm) (res []string, err error) {
-	if fizzbuzz.Limit <= 0 || fizzbuzz.Int1 <= 0 || fizzbuzz.Int2 <= 0 {
-		return nil, errors.New("Limit, Int1 and Int2 needs to be positive values")
+// Stat return the fizzbuzz stat
+func (ctrl FizzbuzzController) Stat(c *gin.Context) {
+	client := db.GetClient()
+	if client == nil {
+		c.JSON(http.StatusOK, gin.H{"message": "Redis not available"})
+		c.Abort()
+		return
 	}
-	for i := 1; i <= fizzbuzz.Limit+1; i++ {
-		if i%(fizzbuzz.Int1*fizzbuzz.Int2) == 0 {
-			res = append(res, fmt.Sprintf("%s%s", fizzbuzz.String1, fizzbuzz.String2))
-		} else if i%fizzbuzz.Int1 == 0 {
-			res = append(res, fmt.Sprintf(fizzbuzz.String1))
-		} else if i%fizzbuzz.Int2 == 0 {
-			res = append(res, fmt.Sprintf(fizzbuzz.String2))
-		} else {
-			res = append(res, fmt.Sprintf("%d", i))
-		}
+	zRevRange, err := client.ZRevRangeWithScores("set", 0, 0).Result()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Internal Redis error", "error": err.Error()})
+		c.Abort()
+		return
+	} else if len(zRevRange) == 0 {
+		c.JSON(http.StatusOK, gin.H{"message": "Empty Stat"})
+		c.Abort()
+		return
+	} else {
+		first := zRevRange[0]
+		c.JSON(http.StatusOK, first)
 	}
-	res = append(res, "...")
-	return res, nil
 }
 
-//Get ...
+// Get fizzbuz value (from FizzbuzzForm)
 func (ctrl FizzbuzzController) Get(c *gin.Context) {
 	var fizzbuzzForm forms.FizzbuzzForm
 
@@ -43,11 +47,22 @@ func (ctrl FizzbuzzController) Get(c *gin.Context) {
 		return
 	}
 
-	res, err := Fizzbuzz(&fizzbuzzForm)
+	res, err := pkg.Fizzbuzz(&fizzbuzzForm)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Malformed request", "error": err.Error()})
 		c.Abort()
 		return
+	}
+
+	req, _ := json.Marshal(fizzbuzzForm)
+	client := db.GetClient()
+	if client != nil {
+		_, err = client.ZIncrBy("set", 1, string(req)).Result()
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "Internal Redis error", "error": err.Error()})
+			c.Abort()
+			return
+		}
 	}
 
 	c.String(http.StatusOK, strings.Join(res[:], ","))
